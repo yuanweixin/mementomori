@@ -26,6 +26,8 @@ Settings:
 * You can choose to see the visualization in units of days, weeks, months, or years. 
 * You can also enter your birthday so it can track how long to show you. 
 
+Here's what it [looks like](./screenshot.png)
+
 # Technical stuff 
 
 I used the [boilerplate](https://github.com/lxieyang/chrome-extension-boilerplate-react) as a starting point to put together the extension. 
