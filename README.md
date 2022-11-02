@@ -14,6 +14,12 @@ I got the idea of the visualization from the very nice but sobering [Wait but wh
 
 Is this a bit too macabre? Sure. But it seems to work, at least, for me. 
 
+I also optimized the look and feel for my 1920x1080 monitor in portrait mode. Pull requests welcome for tweaking it for other monitor/screen sizes. 
+
+# TODO before v1 release 
+* allow you to input your birthday
+* fix the icons
+
 # How it works 
 
 When you open a new tab, you are shown a visualization of life. 
@@ -28,13 +34,23 @@ Settings:
 
 I used the [boilerplate](https://github.com/lxieyang/chrome-extension-boilerplate-react) as a starting point to put together the extension. 
 
-I did not spend a lot of time tweaking how the layout respond to different screen sizes. The intent is to have a row fit the entire viewport (no horizontal scrolling) but vertical scrolling is okay. 
+## Build 
+
+1. Check if your Node.js version is >= 14.
+2. Run npm install to install the dependencies.
+3. Run npm start
+4. Load your extension on Chrome following:
+    1. Access chrome://extensions/
+    2. Check Developer mode
+    3. Click on Load unpacked extension
+    4. Select the build folder.
 
 # Possible directions for enhancement 
 * i18n for the messages
 * customization of the symbols for time, death, and life (although, I feel that the skull is non-negotiable)
 * customization of the message displayed
 * improve rendering time. the rendering delay for days is especially noticeable
+* tweaking the look and feel for other screen sizes as currently it's tweaked for my 1920x1080 screens in either portrait or landscape orientation
 * allow you to input your birthday, gender and country as a setting, in order to use a more accurate life expectancy. this implies we need to pull in life expectancy data, and periodically update them (although, it is weird if you suddenly get a bunch of 🌹 because life expectancy went up; I don't believe in freebies in life :0)
 
 # License 
