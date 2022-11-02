@@ -13,61 +13,7 @@
   }
 }
 
-@media (max-width : 480px) {
-  .YearGrid {
-    /* 10 years a row */
-    grid-template-columns: repeat(10, 1fr); 
-  }
-  
-  .MonthGrid {
-    /* 36 months a row */
-    grid-template-columns: repeat(36, 1fr); 
-  }
-  
-  .DayGrid {
-    /* 180 days a row */
-    grid-template-columns: repeat(180, 1fr);
-    font-size: 0.2rem;
-  }
-  
-  .WeekGrid {
-    /* 52 weeks a row */
-    grid-template-columns: repeat(52, 1fr);
-    font-size: 0.5rem;
-  }
-}
-
-@media (max-width : 768px) {
-}
-
-@media (max-width : 1024px) {
-}
-
-@media (max-width : 1200px) {
-  .YearGrid {
-    /* 10 years a row */
-    grid-template-columns: repeat(10, 1fr); 
-  }
-  
-  .MonthGrid {
-    /* 36 months a row */
-    grid-template-columns: repeat(36, 1fr); 
-  }
-  
-  .DayGrid {
-    /* 180 days a row */
-    grid-template-columns: repeat(180, 1fr);
-    font-size: 0.2rem;
-  }
-  
-  .WeekGrid {
-    /* 52 weeks a row */
-    grid-template-columns: repeat(52, 1fr);
-    font-size: 0.5rem;
-  }
-}
-
-@media (min-width : 1201px) {
+@media (min-width : 1920px) {
   .YearGrid {
     /* 10 years a row */
     grid-template-columns: repeat(10, 1fr); 
@@ -76,8 +22,14 @@
 
   .MonthGrid {
     /* 36 months a row */
-    grid-template-columns: repeat(36, 1fr); 
-    font-size: 2rem;
+    grid-template-columns: repeat(60, 1fr); 
+    font-size: 2.5rem;
+  }
+  
+  .WeekGrid {
+    /* 52 weeks a row */
+    grid-template-columns: repeat(52, 1fr);
+    font-size: 1.8rem;
   }
   
   .DayGrid {
@@ -85,13 +37,35 @@
     grid-template-columns: repeat(180, 1fr);
     font-size: 0.5rem;
   }
-  
+}
+
+/* would be much easier if this thing just let me change the class on fly. then just generate stuff for a range of font size and let me check it in the window */
+@media (min-width : 1080px) and (max-width: 1919px) {
+  .YearGrid {
+    /* 10 years a row */
+    grid-template-columns: repeat(10, 1fr); 
+    font-size: 3.5rem;
+  }
+
+  .MonthGrid {
+    /* 36 months a row */
+    grid-template-columns: repeat(36, 1fr); 
+    font-size: 2rem;
+  }
+
   .WeekGrid {
     /* 52 weeks a row */
     grid-template-columns: repeat(52, 1fr);
-    font-size: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .DayGrid {
+    /* 180 days a row */
+    grid-template-columns: repeat(90, 1fr);
+    font-size: 0.5rem;
   }
 }
+
 
 .Box {
   border-style: solid; 
@@ -100,16 +74,14 @@
   justify-content: center;
   align-items: center;
   padding: 0;
+  border: 0;
   margin: 0;
-  border: 1;
 }
 
 .YourLife {
   text-align: center;
   font-size: 2rem;
 }
-
-
 
 .App-header {
   background-color: white;
