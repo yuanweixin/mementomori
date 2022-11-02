@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import Newtab from './Newtab';
+import {Newtab, DAYS, WEEKS, MONTHS, YEARS} from './Newtab';
 import './index.css';
 
-render(<Newtab />, window.document.querySelector('#app-container'));
+render(<Newtab ageLimitYears={5} gridType={2}/>, window.document.querySelector('#app-container'));
 
 if (module.hot) module.hot.accept();
