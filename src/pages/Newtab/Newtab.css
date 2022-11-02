@@ -13,13 +13,95 @@
   }
 }
 
+@media (max-width : 480px) {
+  .YearGrid {
+    /* 10 years a row */
+    grid-template-columns: repeat(10, 1fr); 
+  }
+  
+  .MonthGrid {
+    /* 36 months a row */
+    grid-template-columns: repeat(36, 1fr); 
+  }
+  
+  .DayGrid {
+    /* 180 days a row */
+    grid-template-columns: repeat(180, 1fr);
+    font-size: 0.2rem;
+  }
+  
+  .WeekGrid {
+    /* 52 weeks a row */
+    grid-template-columns: repeat(52, 1fr);
+    font-size: 0.5rem;
+  }
+}
+
+@media (max-width : 768px) {
+}
+
+@media (max-width : 1024px) {
+}
+
+@media (max-width : 1200px) {
+  .YearGrid {
+    /* 10 years a row */
+    grid-template-columns: repeat(10, 1fr); 
+  }
+  
+  .MonthGrid {
+    /* 36 months a row */
+    grid-template-columns: repeat(36, 1fr); 
+  }
+  
+  .DayGrid {
+    /* 180 days a row */
+    grid-template-columns: repeat(180, 1fr);
+    font-size: 0.2rem;
+  }
+  
+  .WeekGrid {
+    /* 52 weeks a row */
+    grid-template-columns: repeat(52, 1fr);
+    font-size: 0.5rem;
+  }
+}
+
+@media (min-width : 1201px) {
+  .YearGrid {
+    /* 10 years a row */
+    grid-template-columns: repeat(10, 1fr); 
+    font-size: 4rem;
+  }
+
+  .MonthGrid {
+    /* 36 months a row */
+    grid-template-columns: repeat(36, 1fr); 
+    font-size: 2rem;
+  }
+  
+  .DayGrid {
+    /* 180 days a row */
+    grid-template-columns: repeat(180, 1fr);
+    font-size: 0.5rem;
+  }
+  
+  .WeekGrid {
+    /* 52 weeks a row */
+    grid-template-columns: repeat(52, 1fr);
+    font-size: 1rem;
+  }
+}
+
 .Box {
   border-style: solid; 
   aspect-ratio: 1;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0;
-  margin:0; 
-  border:0;
+  margin: 0;
+  border: 1;
 }
 
 .YourLife {
@@ -27,27 +109,7 @@
   font-size: 2rem;
 }
 
-.YearGrid {
-  /* 10 years a row */
-  grid-template-columns: repeat(10, 1fr); 
-}
 
-.MonthGrid {
-  /* 36 months a row */
-  grid-template-columns: repeat(36, 1fr); 
-}
-
-.DayGrid {
-  /* 180 days a row */
-  grid-template-columns: repeat(180, 1fr);
-  font-size: 0.2rem;
-}
-
-.WeekGrid {
-  /* 52 weeks a row */
-  grid-template-columns: repeat(52, 1fr);
-  font-size: 0.5rem;
-}
 
 .App-header {
   background-color: white;
