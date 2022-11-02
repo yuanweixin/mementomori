@@ -1,7 +1,7 @@
 {
-  "name": "mementomori",
+  "name": "Mori",
   "version": "1.0",
-  "description": "A visualization of your life",
+  "description": "Visualize your life timeline.",
   "license": "MIT",
   "repository": {
     "type": "git",
