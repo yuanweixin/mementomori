@@ -1,8 +1,8 @@
 import React, {useState, Component } from 'react';
-import logo from '../../assets/img/logo.svg';
 import './Popup.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import BDAY_KEY from '../common/Constants.js'
 
 class Popup extends Component {
   constructor() {
@@ -11,13 +11,15 @@ class Popup extends Component {
   }
 
   async storeDate(bday) {
-    await chrome.storage.sync.set({"mmori.bday": bday.toString()});
+    let obj = {}
+    obj[BDAY_KEY] = bday.toString();
+    await chrome.storage.sync.set(obj);
     this.setState({bday : bday});
   }
 
   async loadDate() {
-    let res = await chrome.storage.sync.get(["mmori.bday"]);
-    return new Date(res["mmori.bday"]); // Date(some str) returns current time. Fk javascript. 
+    let res = await chrome.storage.sync.get([BDAY_KEY]);
+    return new Date(res[BDAY_KEY]); // Date(some str) returns current time. Fk javascript. 
   }
 
   async componentDidMount() {
@@ -33,7 +35,6 @@ class Popup extends Component {
             Enter your birthday for accurate visualization! 
           </p>
           <DatePicker selected={this.state.bday} onChange={(date) => {this.storeDate(date);}}/>
-          <button onClick={this.loadDate}>Default</button>;
         </header>
       </div>
     );
