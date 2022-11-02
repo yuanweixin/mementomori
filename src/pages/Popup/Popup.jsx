@@ -50,6 +50,7 @@ class Popup extends Component {
 
           */}
           <DatePicker selected={this.state.bday} onChange={(date) => {this.storeDate(date);}}/>
+          <p>Choose a time unit to viz</p>
           <select value={this.state.gridType} onChange={(evt) => {this.storeGridType(evt.target.value);}}>
             {/* These correspond to the constants defined in Common.  */}
             <option value="0">Show Days</option>
