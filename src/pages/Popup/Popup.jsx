@@ -2,7 +2,7 @@ import React, {useState, Component } from 'react';
 import './Popup.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import BDAY_KEY from '../common/Constants.js'
+import { BDAY_KEY, loadBday } from '../common/Common.js'
 
 class Popup extends Component {
   constructor() {
@@ -17,13 +17,8 @@ class Popup extends Component {
     this.setState({bday : bday});
   }
 
-  async loadDate() {
-    let res = await chrome.storage.sync.get([BDAY_KEY]);
-    return new Date(res[BDAY_KEY]); // Date(some str) returns current time. Fk javascript. 
-  }
-
   async componentDidMount() {
-    let d = await this.loadDate();
+    let d = await loadBday();
     this.setState({bday : d});
   }
 
