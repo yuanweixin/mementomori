@@ -14,21 +14,46 @@
 }
 
 .Box {
-  border-style: solid;
+  border-style: solid; 
   aspect-ratio: 1;
+  text-align: center;
+  padding: 0;
+  margin:0; 
+  border:0;
 }
 
 .YourLife {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
+}
+
+.YearGrid {
+  /* 10 years a row */
+  grid-template-columns: repeat(10, 1fr); 
+}
+
+.MonthGrid {
+  /* 36 months a row */
+  grid-template-columns: repeat(36, 1fr); 
+}
+
+.DayGrid {
+  /* 180 days a row */
+  grid-template-columns: repeat(180, 1fr);
+  font-size: 0.2rem;
+}
+
+.WeekGrid {
+  /* 52 weeks a row */
+  grid-template-columns: repeat(52, 1fr);
+  font-size: 0.5rem;
 }
 
 .App-header {
   background-color: white;
   display: grid;
-  grid-template-columns: repeat(20, 1fr);
-  grid-gap: 0.5rem;
-  margin: 4rem;
+  grid-gap: 0;
+  grid-auto-columns: 100vw;
 }
 
 .App-link {
