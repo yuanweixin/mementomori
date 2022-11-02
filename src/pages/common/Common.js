@@ -21,7 +21,7 @@ export const loadBday = async (defaultVal) => {
 
 // Returns an int 
 export const loadGridType = async () => {
-    let res = chrome.storage.sync.get([GRIDTYPE_KEY]);
+    let res = await chrome.storage.sync.get([GRIDTYPE_KEY]);
     let n =  Number(res[GRIDTYPE_KEY]);
     if (isNaN(n)) {
         return WEEKS; // reasonable default. 
