@@ -5,7 +5,7 @@ import Options from './Options';
 import './index.css';
 
 render(
-  <Options title={'Settings'} />,
+  <Options title={'Life is short!'} />,
   window.document.querySelector('#app-container')
 );
 

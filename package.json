@@ -1,11 +1,11 @@
 {
-  "name": "wordcount",
-  "version": "4.3.5",
-  "description": "count words of the currently opened article",
+  "name": "mementomori",
+  "version": "1.0",
+  "description": "A visualization of your life",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lxieyang/chrome-extension-boilerplate-react.git"
+    "url": "https://https://github.com/yuanweixin/mementomori.git"
   },
   "scripts": {
     "build": "node utils/build.js",
