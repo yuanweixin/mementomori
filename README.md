@@ -16,9 +16,6 @@ Is this a bit too macabre? Sure. But it seems to work, at least, for me.
 
 I also optimized the look and feel for my 1920x1080 monitor in portrait mode. Pull requests welcome for tweaking it for other monitor/screen sizes. 
 
-# TODO before v1 release 
-* allow you to input your birthday
-
 # How it works 
 
 When you open a new tab, you are shown a visualization of life. 
