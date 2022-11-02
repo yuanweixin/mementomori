@@ -18,7 +18,6 @@ I also optimized the look and feel for my 1920x1080 monitor in portrait mode. Pu
 
 # TODO before v1 release 
 * allow you to input your birthday
-* fix the icons
 
 # How it works 
 

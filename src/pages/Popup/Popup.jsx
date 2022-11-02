@@ -1,38 +1,43 @@
-import React from 'react';
+import React, {useState, Component } from 'react';
 import logo from '../../assets/img/logo.svg';
 import './Popup.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-const PopupOld = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/pages/Popup/Popup.jsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React!
-        </a>
-      </header>
-    </div>
-  );
-};
+class Popup extends Component {
+  constructor() {
+    super();
+    this.state = {bday : new Date()};
+  }
 
-const Popup = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/pages/Popup/Popup.jsx</code> and save to reload.
-        </p>
-        
-      </header>
-    </div>
-  );
-};
+  async storeDate(bday) {
+    await chrome.storage.sync.set({"mmori.bday": bday.toString()});
+    this.setState({bday : bday});
+  }
+
+  async loadDate() {
+    let res = await chrome.storage.sync.get(["mmori.bday"]);
+    return new Date(res["mmori.bday"]); // Date(some str) returns current time. Fk javascript. 
+  }
+
+  async componentDidMount() {
+    let d = await this.loadDate();
+    this.setState({bday : d});
+  }
+
+  render () {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <p>
+            Enter your birthday for accurate visualization! 
+          </p>
+          <DatePicker selected={this.state.bday} onChange={(date) => {this.storeDate(date);}}/>
+          <button onClick={this.loadDate}>Default</button>;
+        </header>
+      </div>
+    );
+  }
+}
+
 export default Popup;
