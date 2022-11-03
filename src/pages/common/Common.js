@@ -5,18 +5,17 @@ export let WEEKS = 1;
 export let MONTHS = 2; 
 export let YEARS = 3;
 
-export const loadDate = async(key) => {
+export const loadDate = async(key, defaultVal) => {
     let res = await chrome.storage.sync.get([key]);
-    return new Date(res[key]); // Date(some str) returns current time. Fk javascript. 
+    let d = Date.parse(res[key])
+    if (isNaN(d)) 
+        return defaultVal;
+    return d; 
 }
 
 // Returns a Date object 
 export const loadBday = async (defaultVal) => {
-    try {
-        return loadDate(BDAY_KEY);
-    } catch (e) {
-        return defaultVal;
-    }
+    return loadDate(BDAY_KEY, defaultVal)
 }
 
 // Returns an int 
