@@ -48,8 +48,16 @@ I used the [boilerplate](https://github.com/lxieyang/chrome-extension-boilerplat
 
 ```
 NODE_ENV=production npm run build
+cd build
+zip mori.zip *
 ```
-Then pack it up. 
+Then upload to chrome web store. 
+
+
+To resize screenshots (because chrome web store forces you to upload fixed dimension), do this. 
+```
+convert -resize 1280x800! src.png dst.jpg
+```
 
 # Release notes 
 
