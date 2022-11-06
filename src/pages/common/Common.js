@@ -1,6 +1,6 @@
 export const BDAY_KEY = "mmori.bday";
 export const GRIDTYPE_KEY = "mmori.gtype";
-
+export const AGE_EXPECTANCY = "mmori.ae"
 export const GridType = {
     DAYS : 0,
     WEEKS : 1,
@@ -28,6 +28,21 @@ export const loadGridType = async () => {
         return GridType.WEEKS; // reasonable default. 
     } 
     return n;
+}
+
+export const loadAgeExpectancy = async () => {
+    let res = await chrome.storage.sync.get([AGE_EXPECTANCY]);
+    let n =  Number(res[AGE_EXPECTANCY]);
+    if (isNaN(n)) {
+        return 76.22; // for male, from https://www.ssa.gov/oact/STATS/table4c6.html, accessed 11/6/2022 
+    } 
+    return n;
+}
+
+export const storeAgeExpectancy = async (ae) => {
+    let obj = {}
+    obj[AGE_EXPECTANCY] = ae;
+    await chrome.storage.sync.set(obj);
 }
 
 export const storeBday = async (bday) => {

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'; // utterly insane/stupid difference btw export default vs export. garbage language. 
-import { loadBday, loadGridType, storeBday, storeGridType,  } from '../common/Common';
+import { loadBday, loadGridType, storeBday, storeGridType, loadAgeExpectancy  } from '../common/Common';
 import Popup from "../Popup/Popup"
 import "react-datepicker/dist/react-datepicker.css";
 import './Newtab.css';
@@ -25,7 +25,7 @@ const curItem = (curAgeYears, gridType) => {
 
 const UNKNOWN_BDAY = -1; 
 
-const Newtab = (arg) => { 
+const Newtab = () => { 
   let res = []
   const now = new Date();
   const [bday, setBday] = useState(null);
@@ -50,6 +50,15 @@ const Newtab = (arg) => {
     set();
   }, []);
 
+  const [ageExpectancy, setAgeExpectancy] = useState(-1);
+  useEffect(() => {
+    async function set() {
+      let ae = await loadAgeExpectancy();
+      setAgeExpectancy(ae);
+    };
+    set();
+  }, []);
+
   // side note
   // unlike componentDidUpdate
   // the "newer" way of "effects" runs after render, so we have to differentiate
@@ -61,7 +70,7 @@ const Newtab = (arg) => {
     return (<div></div>);
   } else {
     let curAgeYears = (now - bday) / (3600 * 1000 * 24 * 365.25);
-    let nboxes = numItems(arg.ageLimitYears, gridType);
+    let nboxes = numItems(ageExpectancy, gridType);
     let cbox = curItem(curAgeYears, gridType);
     for(let i=0; i<nboxes; i++) {
       if (i < cbox) {

@@ -2,18 +2,20 @@ import React, {useState, Component } from 'react';
 import './Popup.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { storeGridType, storeBday, loadBday, loadGridType, GridType } from '../common/Common.js'
+import { storeGridType, storeBday, loadBday, loadGridType, GridType, storeAgeExpectancy, loadAgeExpectancy } from '../common/Common.js'
+import NumericInput from 'react-numeric-input';
 
 class Popup extends Component {
   constructor() {
     super();
-    this.state = {bday : new Date(), gridType : String(GridType.WEEKS)};
+    this.state = {bday : new Date(), gridType : String(GridType.WEEKS), ageExpectancy : 76.61};
   }
   
   async componentDidMount() {
     let d = await loadBday(new Date());
     let g = await loadGridType();
-    this.setState({bday : d, gridType: String(g)});
+    let ae = await loadAgeExpectancy();
+    this.setState({bday : d, gridType: String(g), ageExpectancy: ae});
   }
 
   render () {
@@ -30,6 +32,8 @@ class Popup extends Component {
             <option value="2">Months</option>
             <option value="3">Years</option>
           </select>
+          <div className="Message">Choose a time unit</div>
+          <NumericInput step={1} precision={2} min={0} max={130} value={this.state.ageExpectancy} onChange={(valAsNum, valAsStr, ele) => { storeAgeExpectancy(valAsNum); this.setState({ageExpectancy : valAsNum}); }}/>
           <div className="Message">Setting takes effect in new tabs.</div>
         </div>
       </div>
