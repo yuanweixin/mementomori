@@ -21,6 +21,16 @@
   }
 }
 
+.Message {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  font-size: 1rem;
+}
+
+.Dropdown {
+  font-size: 1rem
+}
+
 .App-header {
   height: 100%;
   display: flex;

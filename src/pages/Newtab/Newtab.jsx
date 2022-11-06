@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'; // utterly insane/stupid difference btw export default vs export. garbage language. 
-import { WEEKS, loadBday, loadGridType } from '../common/Common';
+import { loadBday, loadGridType, storeBday, storeGridType,  } from '../common/Common';
 import './Newtab.css';
 import './Newtab.scss';
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 // options 
 const DurationGridSetting = [
   { name: "Days", gridClass: "DayGrid", fromYear: 365},
@@ -21,18 +22,24 @@ const curItem = (curAgeYears, gridType) => {
   return Math.floor(curAgeYears * fromYear);
 }
 
-const Newtab = (arg) => { // js is such a fucking verbose language. 
+const UNKNOWN_BDAY = -1; 
+
+const Newtab = (arg) => { 
   let res = []
-  const [curAgeYears, setCurAgeYears] = useState(0);
+  const now = new Date();
+  const [bday, setBday] = useState(null);
   useEffect(() => {
     async function set() {
-      let now = new Date();
-      let bday = await loadBday(now);
-      setCurAgeYears((now - bday) / (3600 * 1000 * 24 * 365.25));
+      let bd = await loadBday();
+      if (bd == null) {
+        setBday(UNKNOWN_BDAY);
+      } else {
+        setBday(bd);
+      }
     };
     set();
   }, []);
-
+  
   const [gridType, setGridType] = useState(-1); 
   useEffect(() => {
     async function set() {
@@ -42,14 +49,36 @@ const Newtab = (arg) => { // js is such a fucking verbose language.
     set();
   }, []);
 
-  
-  // now we have to have a stupid check here because unlike componentDidUpdate
+  // side note
+  // unlike componentDidUpdate
   // the "newer" way of "effects" runs after render, so we have to differentiate
   // between the uninitialized state vs the initialized state. without this, user
   // will see an invalid UI flash by before the valid UI shows up. 
-  if (curAgeYears == 0 || gridType == -1) { 
+  if (bday == UNKNOWN_BDAY) { 
+    return (
+      <div className="Config">
+        <div className="Config-header">
+          <div className="Message">👋 I need to know your birthday to visualize your life timeline.</div>
+          <DatePicker selected={bday} onChange={(date) => {storeBday(date); setBday(date);}}/>
+          <div className="Message">Choose a time unit</div>
+          <select className="Dropdown" value={gridType} onChange={(evt) => {
+            let gtstr = evt.target.value;
+            storeGridType(gtstr); setGridType(GridType.toString(gtstr));
+            }}>
+            {/* These correspond to the constants defined in Common.  */}
+            <option value="0">Days</option>
+            <option value="1">Weeks</option>
+            <option value="2">Months</option>
+            <option value="3">Years</option>
+          </select>
+            <div className="Message">You can open a new tab after configuring.</div>
+        </div>
+      </div>
+      );
+  } else if (gridType == -1 || bday == null) { // still loading. 
     return (<div></div>);
   } else {
+    let curAgeYears = (now - bday) / (3600 * 1000 * 24 * 365.25);
     let nboxes = numItems(arg.ageLimitYears, gridType);
     let cbox = curItem(curAgeYears, gridType);
     for(let i=0; i<nboxes; i++) {
@@ -65,9 +94,9 @@ const Newtab = (arg) => { // js is such a fucking verbose language.
     return (
       <div>
       <p className="YourLife">⏳⏳⏳{DurationGridSetting[gridType].name} of your life⏳⏳⏳</p>
-      <header className={headerClass}>
-      {res}
-      </header>
+      <div className={headerClass}>
+        {res}
+      </div>
       </div>
     );
   }

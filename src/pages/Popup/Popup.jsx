@@ -2,28 +2,14 @@ import React, {useState, Component } from 'react';
 import './Popup.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { GRIDTYPE_KEY, BDAY_KEY, loadBday, loadGridType, WEEKS } from '../common/Common.js'
+import { storeGridType, storeBday, loadBday, loadGridType, GridType } from '../common/Common.js'
 
 class Popup extends Component {
   constructor() {
     super();
-    this.state = {bday : new Date(), gridType : String(WEEKS)};
+    this.state = {bday : new Date(), gridType : String(GridType.WEEKS)};
   }
-
-  async storeDate(bday) {
-    let obj = {} 
-    obj[BDAY_KEY] = bday.toString();
-    await chrome.storage.sync.set(obj);
-    this.setState({bday : bday});
-  }
-
-  async storeGridType(gridTypeStr) {
-    let obj = {}
-    obj[GRIDTYPE_KEY] = gridTypeStr;
-    await chrome.storage.sync.set(obj);
-    this.setState({gridType : gridTypeStr});
-  }
-
+  
   async componentDidMount() {
     let d = await loadBday(new Date());
     let g = await loadGridType();
@@ -33,10 +19,8 @@ class Popup extends Component {
   render () {
     return (
       <div className="App">
-        <header className="App-header">
-          <p>
-            Enter your birthday for accurate visualization! 
-          </p>
+        <div className="App-header">
+          <div className="Message">Enter birthday (for accurate visualization)</div>
           {/* date is a Date object not event. This is "thanks" to using the react-datepicker library which decides to 
           return Date types. but this is a giant pita impedence mismatch for a function tied to onChange. goes against 
           the intuition of what this should be by convention. again, goes to show that software is broken, esp in js. 
@@ -49,16 +33,16 @@ class Popup extends Component {
           The only place that needs to care what the actual typed value is, would be at the use site. 
 
           */}
-          <DatePicker selected={this.state.bday} onChange={(date) => {this.storeDate(date);}}/>
-          <p>Choose a time unit to viz</p>
-          <select value={this.state.gridType} onChange={(evt) => {this.storeGridType(evt.target.value);}}>
+          <DatePicker selected={this.state.bday} onChange={(date) => {storeBday(date); this.setState({bday : date});}}/>
+          <div className="Message">Choose a time unit</div>
+          <select className="Dropdown" value={this.state.gridType} onChange={(evt) => {storeGridType(evt.target.value); this.setState({gridType: gridTypeStr});}}>
             {/* These correspond to the constants defined in Common.  */}
-            <option value="0">Show Days</option>
-            <option value="1">Show Weeks</option>
-            <option value="2">Show Months</option>
-            <option value="3">Show Years</option>
+            <option value="0">Days</option>
+            <option value="1">Weeks</option>
+            <option value="2">Months</option>
+            <option value="3">Years</option>
           </select>
-        </header>
+        </div>
       </div>
     );
   }

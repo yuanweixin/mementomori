@@ -1,29 +1,43 @@
 export const BDAY_KEY = "mmori.bday";
 export const GRIDTYPE_KEY = "mmori.gtype";
-export let DAYS = 0;
-export let WEEKS = 1; 
-export let MONTHS = 2; 
-export let YEARS = 3;
 
-export const loadDate = async(key, defaultVal) => {
-    let res = await chrome.storage.sync.get([key]);
-    let d = Date.parse(res[key])
+export const GridType = {
+    DAYS : 0,
+    WEEKS : 1,
+    MONTHS: 2, 
+    YEARS: 3,
+    strvals : ["DAYS", "WEEKS", "MONTHS", "YEARS"]
+}
+GridType.toString = (gridType) => {
+    return GridType.strvals[gridType];
+}
+Object.freeze(GridType);
+
+export const loadBday = async () => {
+    let res = await chrome.storage.sync.get([BDAY_KEY]);
+    let d = Date.parse(res[BDAY_KEY])
     if (isNaN(d)) 
-        return defaultVal;
+        return null;
     return d; 
 }
 
-// Returns a Date object 
-export const loadBday = async (defaultVal) => {
-    return loadDate(BDAY_KEY, defaultVal)
-}
-
-// Returns an int 
 export const loadGridType = async () => {
     let res = await chrome.storage.sync.get([GRIDTYPE_KEY]);
     let n =  Number(res[GRIDTYPE_KEY]);
     if (isNaN(n)) {
-        return WEEKS; // reasonable default. 
+        return GridType.WEEKS; // reasonable default. 
     } 
     return n;
+}
+
+export const storeBday = async (bday) => {
+    let obj = {} 
+    obj[BDAY_KEY] = bday.toString();
+    await chrome.storage.sync.set(obj);
+}
+
+export const storeGridType = async (gridTypeStr) => {
+    let obj = {}
+    obj[GRIDTYPE_KEY] = gridTypeStr;
+    await chrome.storage.sync.set(obj);
 }
