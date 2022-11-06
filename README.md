@@ -33,7 +33,7 @@ Here's what it looks like
 
 I used the [boilerplate](https://github.com/lxieyang/chrome-extension-boilerplate-react) as a starting point to put together the extension. 
 
-## Build 
+## Dev build 
 
 1. Check if your Node.js version is >= 14.
 2. Run npm install to install the dependencies.
@@ -43,6 +43,13 @@ I used the [boilerplate](https://github.com/lxieyang/chrome-extension-boilerplat
     2. Check Developer mode
     3. Click on Load unpacked extension
     4. Select the build folder.
+
+## Release build
+
+```
+NODE_ENV=production npm run build
+```
+Then pack it up. 
 
 # Possible directions for enhancement 
 * i18n for the messages
