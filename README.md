@@ -26,8 +26,8 @@ Settings:
 * You can choose to see the visualization in units of days, weeks, months, or years. 
 * You can also enter your birthday so it can track how long to show you. 
 
-Here's what it looks like
-![](./screenshot.png)
+![](./sc.jpg)
+![](./settings.jpg)
 
 # Technical stuff 
 
