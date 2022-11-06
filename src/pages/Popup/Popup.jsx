@@ -21,6 +21,7 @@ class Popup extends Component {
       <div className="App">
         <div className="App-header">
           <div className="Message">Enter birthday (for accurate visualization)</div>
+          <div className="Message">👋 I need to know your birthday to visualize your life timeline.</div>
           <DatePicker maxDate={new Date()} selected={this.state.bday} onChange={(date) => {storeBday(date); this.setState({bday : date});}}/>
           <div className="Message">Choose a time unit</div>
           <select className="Dropdown" value={this.state.gridType} onChange={(evt) => {storeGridType(evt.target.value); this.setState({gridType: evt.target.value});}}>
@@ -30,30 +31,10 @@ class Popup extends Component {
             <option value="2">Months</option>
             <option value="3">Years</option>
           </select>
+          <div className="Message">Setting takes effect in new tabs.</div>
         </div>
       </div>
     );
-
-    // return (
-    //   <div className="Config">
-    //     <div className="Config-header">
-    //       <div className="Message">👋 I need to know your birthday to visualize your life timeline.</div>
-    //       <DatePicker  maxDate={now} selected={bday} onChange={(date) => {storeBday(date); setBday(date);}}/>
-    //       <div className="Message">Choose a time unit</div>
-    //       <select className="Dropdown" value={gridType} onChange={(evt) => {
-    //         let gtstr = evt.target.value;
-    //         storeGridType(gtstr); setGridType(GridType.toString(gtstr));
-    //         }}>
-    //         {/* These correspond to the constants defined in Common.  */}
-    //         <option value="0">Days</option>
-    //         <option value="1">Weeks</option>
-    //         <option value="2">Months</option>
-    //         <option value="3">Years</option>
-    //       </select>
-    //         <div className="Message">You can open a new tab after configuring.</div>
-    //     </div>
-    //   </div>
-    // );
   }
 }
 
