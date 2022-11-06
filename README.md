@@ -51,6 +51,23 @@ NODE_ENV=production npm run build
 ```
 Then pack it up. 
 
+# Release notes 
+
+Memento mori is an old and recurring philosophical idea that one should be mindful of the finiteness of life. 
+
+The Mori extension 
+When you open a new tab, it shows you a visual reminder of the days/weeks/months/years (your choice of granularity) of your life. The past is marked with skull emoji, and the future with a rose emoji. 
+
+I chose the symbolisms of clock, skull, and rose, to represent time, death, and life, respectively. This symbolism is not arbitrary but have a history. For instance, can be seen in Phillippe de Champaigne's vanitas.
+
+Hopefully, with the reminder, you will remain focused on whatever you need to do, and keep that productivity up! Carpe diem! 
+
+You will be asked for your birthday on first use, in order to properly visualize your life. It is only stored locally. 
+
+You can also select the time unit you want to use (days/weeks/months/years). 
+
+The settings page can be accessed by clicking on the extension's icon. 
+
 # Possible directions for enhancement 
 * i18n for the messages
 * customization of the symbols for time, death, and life (although, I feel that the skull is non-negotiable)
