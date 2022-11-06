@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'; // utterly insane/stupid difference btw export default vs export. garbage language. 
 import { loadBday, loadGridType, storeBday, storeGridType,  } from '../common/Common';
-import './Newtab.css';
-import './Newtab.scss';
 import Popup from "../Popup/Popup"
 import "react-datepicker/dist/react-datepicker.css";
+import './Newtab.css';
+import './Newtab.scss';
+
 // options 
 const DurationGridSetting = [
   { name: "Days", gridClass: "DayGrid", fromYear: 365},
@@ -77,11 +78,11 @@ const Newtab = (arg) => {
 
     return (
       <div>
-      <p className="YourLife">⏳⏳⏳{DurationGridSetting[gridType].name} of your life⏳⏳⏳</p>
-      <p className="YourLife">💀 = Units in Past | 🌹 = Units to life expectancy | 🌲 = Units beyond life expectancy </p>
-      <div className={headerClass}>
-        {res}
-      </div>
+        <p className="YourLife">⏳⏳⏳{DurationGridSetting[gridType].name} of your life⏳⏳⏳</p>
+        <p className="YourLife">💀 = Units in Past | 🌹 = Units to life expectancy | 🌲 = Units beyond life expectancy </p>
+        <div className={headerClass}>
+            {res}
+        </div>
       </div>
     );
   }
