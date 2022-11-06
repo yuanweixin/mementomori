@@ -33,7 +33,7 @@ class Popup extends Component {
           The only place that needs to care what the actual typed value is, would be at the use site. 
 
           */}
-          <DatePicker selected={this.state.bday} onChange={(date) => {storeBday(date); this.setState({bday : date});}}/>
+          <DatePicker maxDate={new Date()} selected={this.state.bday} onChange={(date) => {storeBday(date); this.setState({bday : date});}}/>
           <div className="Message">Choose a time unit</div>
           <select className="Dropdown" value={this.state.gridType} onChange={(evt) => {storeGridType(evt.target.value); this.setState({gridType: gridTypeStr});}}>
             {/* These correspond to the constants defined in Common.  */}

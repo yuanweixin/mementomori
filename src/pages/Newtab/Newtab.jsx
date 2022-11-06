@@ -59,7 +59,7 @@ const Newtab = (arg) => {
       <div className="Config">
         <div className="Config-header">
           <div className="Message">👋 I need to know your birthday to visualize your life timeline.</div>
-          <DatePicker selected={bday} onChange={(date) => {storeBday(date); setBday(date);}}/>
+          <DatePicker  maxDate={now} selected={bday} onChange={(date) => {storeBday(date); setBday(date);}}/>
           <div className="Message">Choose a time unit</div>
           <select className="Dropdown" value={gridType} onChange={(evt) => {
             let gtstr = evt.target.value;
