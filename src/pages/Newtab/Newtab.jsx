@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'; // utterly insane/stupid diffe
 import { loadBday, loadGridType, storeBday, storeGridType,  } from '../common/Common';
 import './Newtab.css';
 import './Newtab.scss';
-import DatePicker from "react-datepicker";
+import Popup from "../Popup/Popup"
 import "react-datepicker/dist/react-datepicker.css";
 // options 
 const DurationGridSetting = [
@@ -55,26 +55,7 @@ const Newtab = (arg) => {
   // between the uninitialized state vs the initialized state. without this, user
   // will see an invalid UI flash by before the valid UI shows up. 
   if (bday == UNKNOWN_BDAY) { 
-    return (
-      <div className="Config">
-        <div className="Config-header">
-          <div className="Message">👋 I need to know your birthday to visualize your life timeline.</div>
-          <DatePicker  maxDate={now} selected={bday} onChange={(date) => {storeBday(date); setBday(date);}}/>
-          <div className="Message">Choose a time unit</div>
-          <select className="Dropdown" value={gridType} onChange={(evt) => {
-            let gtstr = evt.target.value;
-            storeGridType(gtstr); setGridType(GridType.toString(gtstr));
-            }}>
-            {/* These correspond to the constants defined in Common.  */}
-            <option value="0">Days</option>
-            <option value="1">Weeks</option>
-            <option value="2">Months</option>
-            <option value="3">Years</option>
-          </select>
-            <div className="Message">You can open a new tab after configuring.</div>
-        </div>
-      </div>
-      );
+    return (<Popup/>);
   } else if (gridType == -1 || bday == null) { // still loading. 
     return (<div></div>);
   } else {

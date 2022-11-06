@@ -8,7 +8,17 @@
   height: 100%;
   padding: 10px;
   background-color: #282c34;
+  color: white;
+  font-size: 1rem;
+  text-align: center;
 }
+
+.App-header {
+  display: grid;
+  grid-gap: 0;
+  grid-auto-columns: 100vw;
+}
+
 
 .App-logo {
   height: 30vmin;
@@ -31,14 +41,12 @@
   font-size: 1rem
 }
 
-.App-header {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+    font-size: 1.5rem;
+    text-align: center;
 }
 
 .App-link {

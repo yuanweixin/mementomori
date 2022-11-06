@@ -1,43 +1,4 @@
-.Config {
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  text-align: center;
-  height: 100%;
-  padding: 10px;
-  background-color: #282c34;
-  color: white;
-  font-size: 1rem
-}
 
-.Config-header {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-
-.Message {
-  padding-bottom: 1rem;
-  padding-top: 1rem;
-  font-size: 1rem;
-}
-
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -72,7 +33,7 @@
   }
 }
 
-/* would be much easier if this thing just let me change the class on fly. then just generate stuff for a range of font size and let me check it in the window */
+/* would be much easier if this thing just let me change the class on y. then just generate stuff for a range of font size and let me check it in the window */
 @media (min-width : 1080px) and (max-width: 1919px) {
   .YearGrid {
     /* 10 years a row */
@@ -122,16 +83,6 @@
   grid-auto-columns: 100vw;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-.react-datepicker-wrapper,
-.react-datepicker__input-container,
-.react-datepicker__input-container input {
-    font-size: 1.5rem;
-    text-align: center;
-}
 
 @keyframes App-logo-spin {
   from {
