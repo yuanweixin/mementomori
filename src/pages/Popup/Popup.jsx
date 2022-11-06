@@ -24,6 +24,7 @@ class Popup extends Component {
         <div className="Popup-header">
           <div className="Message">👋 I need to know your birthday to visualize your life timeline.</div>
           <DatePicker maxDate={new Date()} selected={this.state.bday} onChange={(date) => {storeBday(date); this.setState({bday : date});}}/>
+          <br/>
           <div className="Message">Choose a time unit</div>
           <select className="Dropdown" value={this.state.gridType} onChange={(evt) => {storeGridType(evt.target.value); this.setState({gridType: evt.target.value});}}>
             {/* These correspond to the constants defined in Common.  */}
@@ -32,7 +33,8 @@ class Popup extends Component {
             <option value="2">Months</option>
             <option value="3">Years</option>
           </select>
-          <div className="Message">Choose a time unit</div>
+          <br/>
+          <div className="Message">Age expectancy in years (e.g. 77.77) </div>
           <NumericInput step={1} precision={2} min={0} max={130} value={this.state.ageExpectancy} onChange={(valAsNum, valAsStr, ele) => { storeAgeExpectancy(valAsNum); this.setState({ageExpectancy : valAsNum}); }}/>
           <div className="Message">Setting takes effect in new tabs.</div>
         </div>
