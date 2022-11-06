@@ -60,7 +60,6 @@
   }
 }
 
-
 .Box {
   border-style: solid; 
   aspect-ratio: 1;
@@ -82,7 +81,6 @@
   grid-gap: 0;
   grid-auto-columns: 100vw;
 }
-
 
 @keyframes App-logo-spin {
   from {

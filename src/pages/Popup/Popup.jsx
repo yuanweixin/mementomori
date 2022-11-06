@@ -20,7 +20,6 @@ class Popup extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <div className="Message">Enter birthday (for accurate visualization)</div>
           <div className="Message">👋 I need to know your birthday to visualize your life timeline.</div>
           <DatePicker maxDate={new Date()} selected={this.state.bday} onChange={(date) => {storeBday(date); this.setState({bday : date});}}/>
           <div className="Message">Choose a time unit</div>
