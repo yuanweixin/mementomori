@@ -36,9 +36,11 @@
 
 
 .react-datepicker-wrapper,
+.react-numeric-input,
+.react-numeric-input input,
 .react-datepicker__input-container,
 .react-datepicker__input-container input {
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-align: center;
 }
 
