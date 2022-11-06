@@ -18,7 +18,7 @@ export const loadBday = async () => {
     let d = Date.parse(res[BDAY_KEY])
     if (isNaN(d)) 
         return null;
-    return d; 
+    return new Date(d);
 }
 
 export const loadGridType = async () => {
