@@ -88,12 +88,16 @@ const Newtab = (arg) => {
         res.push(<div className="Box" key={i}>🌹</div>);
       }
     }
+    for (let i=nboxes; i<cbox; i++) {
+      res.push(<div className="Box" key={i}>🌲</div>);
+    }
     let headerClass = "App-header ";
     headerClass += DurationGridSetting[gridType].gridClass;
 
     return (
       <div>
       <p className="YourLife">⏳⏳⏳{DurationGridSetting[gridType].name} of your life⏳⏳⏳</p>
+      <p className="YourLife">💀 = Units in Past | 🌹 = Units to life expectancy | 🌲 = Units beyond life expectancy </p>
       <div className={headerClass}>
         {res}
       </div>
