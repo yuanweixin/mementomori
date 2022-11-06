@@ -6,6 +6,23 @@
   }
 }
 
+.YearGrid {
+  /* 10 years a row */
+  grid-template-columns: repeat(10, 1fr); 
+}
+.MonthGrid {
+  /* 36 months a row */
+  grid-template-columns: repeat(60, 1fr); 
+}
+.WeekGrid {
+  /* 52 weeks a row */
+  grid-template-columns: repeat(52, 1fr);
+}
+.DayGrid {
+  /* 180 days a row */
+  grid-template-columns: repeat(180, 1fr);
+}
+
 @media (min-width : 1920px) {
   .YearGrid {
     /* 10 years a row */
@@ -32,6 +49,8 @@
     font-size: 0.5rem;
   }
 }
+
+
 
 /* would be much easier if this thing just let me change the class on y. then just generate stuff for a range of font size and let me check it in the window */
 @media (min-width : 1080px) and (max-width: 1919px) {
